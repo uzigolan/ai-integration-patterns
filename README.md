@@ -48,9 +48,11 @@ This toolkit demonstrates **8 different methods** for AI systems to use your cus
    - Observable, audit-logged
    - Perfect for: Complex workflows, notifications
 
-8. **`pattern_8_mcp_server.py`** - MCP Server
+8. **`pattern_8_mcp_server.py`** - MCP Server and skill
    - Native tool interface for Codex and other MCP clients
    - Exposes capability discovery, validation, and certificate generation tools
+   - Paired with **`.github/skills/cert-generator-mcp/SKILL.md`** — the Copilot skill that instructs the AI *how* to use the MCP tools (validate before generate, safety rules, workflow order)
+   - The skill is triggered when the user mentions: `pki`, `PKI`, `use the MCP`, `via MCP`, `MCP server`, `pattern 8`, `pattern_8`, `cert via MCP`
    - Perfect for: Controlled agent actions and tool discovery
 
 ### Documentation
@@ -120,14 +122,26 @@ python pattern_6_abstract_interface.py
 
 python pattern_7_event_driven.py
 
-### Pattern 8: MCP Server (Codex + Copilot)
+### Pattern 8: MCP Server and Skill (Codex + Copilot)
+
+This pattern has two parts that work together:
+
+| Part | File | Role |
+|---|---|---|
+| MCP Server | `pattern_8_mcp_server.py` | Runs as a subprocess, exposes 3 tools to the AI client |
+| Copilot Skill | `.github/skills/cert-generator-mcp/SKILL.md` | Tells Copilot *when* and *how* to use those tools |
+
+**The skill triggers automatically** when you say any of:
+`pki`, `PKI`, `use the MCP`, `via MCP`, `MCP server`, `pattern 8`, `pattern_8`, `cert via MCP`, `generate certificate using MCP`
+
+Once triggered, Copilot follows the skill's workflow: call `validate_certificate_request` first, then `generate_certificate` only if validation passes.
 
 ```powershell
 py -m pip install -r requirements-mcp.txt
 codex mcp add certificate-generator -- "$PWD\.venv\Scripts\python.exe" "$PWD\pattern_8_mcp_server.py"
 ```
 
-Or register for Copilot in VS Code with `.vscode/mcp.json`:
+Or register for Copilot in VS Code with `.vscode/mcp.json` (already included in this repo):
 
 CLI option (PowerShell) to create it automatically:
 
