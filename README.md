@@ -51,7 +51,7 @@ This toolkit demonstrates **8 different methods** for AI systems to use your cus
 8. **`pattern_8_mcp_server.py`** - MCP Server and skill
    - Native tool interface for Codex and other MCP clients
    - Exposes capability discovery, validation, and certificate generation tools
-   - Paired with **`.github/skills/cert-generator-mcp/SKILL.md`** — the Copilot skill that instructs the AI *how* to use the MCP tools (validate before generate, safety rules, workflow order)
+   - Paired with the **`cert-generator-mcp`** Copilot skill that instructs the AI *how* to use the MCP tools (validate before generate, safety rules, workflow order)
    - The skill is triggered when the user mentions: `pki`, `PKI`, `use the MCP`, `via MCP`, `MCP server`, `pattern 8`, `pattern_8`, `cert via MCP`
    - Perfect for: Controlled agent actions and tool discovery
 
