@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "certificate-generator": {
+      "type": "stdio",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "args": ["${workspaceFolder}/pattern_8_mcp_server.py"]
+    }
+  }
+}

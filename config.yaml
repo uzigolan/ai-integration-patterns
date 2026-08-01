@@ -1,0 +1,25 @@
+certificates:
+
+  - cn: api.example.com
+    key_type: rsa
+    key_strength: 2048
+    validity_days: 365
+    organization: Example Corp
+    country: US
+    state: California
+    locality: San Francisco
+    output_dir: ./certs
+
+  - cn: web.example.com
+    key_type: rsa
+    key_strength: 4096
+    validity_days: 730
+    organization: Example Corp
+    output_dir: ./certs
+
+  - cn: mail.example.com
+    key_type: ec
+    key_strength: 256
+    validity_days: 180
+    organization: Example Corp
+    output_dir: ./certs

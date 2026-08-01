@@ -1,0 +1,2 @@
+# Optional dependency for Pattern 8 (MCP server).
+fastmcp>=3.0.0
